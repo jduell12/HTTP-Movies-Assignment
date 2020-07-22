@@ -48,10 +48,12 @@ const UpdateMovie = props => {
             .catch(err => console.log(err))
     }
 
-    const handleChange = e => {
+    const handleChange = event => {
+        let value = event.target.name==='stars' ? event.target.value.split(',') : event.target.value;
+
         setMovie({
             ...movie,
-            [e.target.name]: e.target.value
+            [event.target.name]: value
         });
     }
 
@@ -68,6 +70,10 @@ const UpdateMovie = props => {
             <label htmlFor="metascore">
                 Metascore: &nbsp;
                 <input type="number" id="metascore" name="metascore" value={movie.metascore} onChange={handleChange} step="1" />
+            </label>
+            <label htmlFor="stars">
+                Stars: &nbsp;
+                <input type="text" id="stars" name="stars" value={movie.stars.join(',')} onChange={handleChange} />
             </label>
             <button>Edit Movie</button>
         </form>

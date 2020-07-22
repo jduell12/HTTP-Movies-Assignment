@@ -15,11 +15,11 @@ const AddMovie = props => {
     const {push} = useHistory();
 
     const handleChange = event => {
-        let value = event.target.name==='starts' ? event.target.value.split(',') : event.target.value;
+        let value = event.target.name==='stars' ? event.target.value.split(',') : event.target.value;
 
         setMovie({
             ...movie,
-            [event.target.name]: [value]
+            [event.target.name]: value
         });
     }
 
@@ -53,7 +53,7 @@ const AddMovie = props => {
                 Stars: &nbsp;
                 <input type="text" id="stars" name="stars" value={movie.stars.join(',')} onChange={handleChange} />
             </label>
-            <button>Edit Movie</button>
+            <button>Add Movie</button>
         </form>
     )
 }
