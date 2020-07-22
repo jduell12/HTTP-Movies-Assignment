@@ -77,11 +77,11 @@ body {
   text-align: center;
 }
 
-.updateForm{
+form{
   text-align: center;
 }
 
-.updateForm  label{
+form  label{
   display: block;
   text-align: center;
 }
