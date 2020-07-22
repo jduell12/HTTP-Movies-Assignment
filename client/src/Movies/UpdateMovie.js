@@ -27,13 +27,15 @@ const UpdateMovie = props => {
             console.log('in else');
             axios.get(`${BASE_URL}api/movies/${params.id}`)
             .then(res => {
-                console.log(res);
-                setMovie(res.data);
+                const newMovieArr = props.movieList.fileter(movie => movie.id !== params.id);
+                newMovieArr.push(res.data);
+                props.setMovieList(newMovieArr);
+                push(`/movies/${params.id}`);
             })
-            .catch(err => console.log(err));
+            .catch(err => console.log(err))
             
         }
-    }, [])
+    }, [location.state, params.id])
 
     const submitMovie = e => {
         e.preventDefault();
