@@ -75,3 +75,12 @@ body {
   color: red;
   text-align: center;
 }
+
+.updateForm{
+  text-align: center;
+}
+
+.updateForm  label{
+  display: block;
+  text-align: center;
+}
