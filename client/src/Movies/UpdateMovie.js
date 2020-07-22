@@ -17,20 +17,17 @@ const UpdateMovie = props => {
     const params = useParams();
     const {push} = useHistory();
 
-    //check if we have data in location.data for the movie
-    //if we don't then make api call to retrieve the movie details
+
 
     useEffect(() => {
+        //check if we have data in location.data for the movie
+        //if we don't then make api call to retrieve the movie details
         if(location.state){
             setMovie(location.state);
         } else {    
-            console.log('in else');
             axios.get(`${BASE_URL}api/movies/${params.id}`)
             .then(res => {
-                const newMovieArr = props.movieList.fileter(movie => movie.id !== params.id);
-                newMovieArr.push(res.data);
-                props.setMovieList(newMovieArr);
-                push(`/movies/${params.id}`);
+                setMovie(res.data);
             })
             .catch(err => console.log(err))
             
@@ -43,7 +40,10 @@ const UpdateMovie = props => {
         axios 
             .put(`${BASE_URL}api/movies/${params.id}`, movie)
             .then(res => {
-                console.log(res.data);
+                const newMovieArr = props.movieList.filter(movie => movie.id !== params.id);
+                newMovieArr.push(res.data);
+                props.setMovieList(newMovieArr);
+                push(`/`);
             })
             .catch(err => console.log(err))
     }
