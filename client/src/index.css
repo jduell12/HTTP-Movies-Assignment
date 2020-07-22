@@ -85,3 +85,8 @@ form  label{
   display: block;
   text-align: center;
 }
+
+a{
+  text-decoration: none;
+  color: black;
+}
